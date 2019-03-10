@@ -1,11 +1,10 @@
 import Ember from 'ember';
 import { setOwner } from '@ember/application';
-import EmberObject, { setProperties } from '@ember/object';
+import { setProperties } from '@ember/object';
 import createManager from './create-manager';
 
-export default class Modifier extends EmberObject {
+export default class Modifier {
   constructor(attrs = {}, _owner) {
-    super();
     setOwner(this, _owner);
     setProperties(this, attrs);
   }
