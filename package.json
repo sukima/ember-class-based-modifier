@@ -68,6 +68,5 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  },
-  "homepage": "https://spencer516.github.io/ember-functional-modifiers"
+  }
 }
