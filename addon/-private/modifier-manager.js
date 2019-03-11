@@ -12,10 +12,14 @@ export default class ModifierManager {
   }
 
   createModifier(Klass, args) {
-    let isEmberObject = Klass.create !== undefined;
-    return isEmberObject
-      ? Klass.create(this.owner.ownerInjection(), args.named)
-      : new Klass(args.named, this.owner);
+    let isEmberObject = Klass.class.create !== undefined;
+
+    if (isEmberObject) {
+      return Klass.create(args.named);
+    } else {
+      let Constructor = Klass.class;
+      return new Constructor(args.named, this.owner);
+    }
   }
 
   installModifier(instance, element, args) {
