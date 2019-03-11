@@ -1,10 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, settled } from '@ember/test-helpers';
+import Service, { inject as service } from '@ember/service';
 import hbs from 'htmlbars-inline-precompile';
-import Modifier from 'ember-oo-modifiers';
+import { Modifier } from 'ember-oo-modifiers';
 
-module('Integration | Modifier Manager | oo modifier', function(hooks) {
+module('Integration | Modifier Manager | oo modifier (classic)', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function() {
@@ -221,5 +222,22 @@ module('Integration | Modifier Manager | oo modifier', function(hooks) {
       'didUpdateArguments',
       'willDestroyElement'
     ]);
+  });
+
+  test('can participate in ember dependency injection', async function(assert) {
+    this.owner.register(
+      'service:test-service',
+      Service.extend({ value: 'test-service-value' })
+    );
+    this.registerModifierClass(
+      'songbird',
+      Modifier.extend({
+        testService: service(),
+        didInsertElement() {
+          assert.equal(this.testService.value, 'test-service-value');
+        }
+      })
+    );
+    await render(hbs`<h1 {{songbird}}>Hello</h1>`);
   });
 });
