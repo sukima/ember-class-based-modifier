@@ -206,7 +206,7 @@ Then, you could use this in your template:
 
 ```js
 // app/modifiers/track-click.js
-import { inject as service } from '@ember/service';
+import { inject as service } from '@ember-decorators/service';
 import Modifier from 'ember-oo-modifiers';
 
 class TrackClickModifier extends Modifier {
@@ -238,11 +238,18 @@ Then, you could use this in your template:
 
 ## API
 
-* `element` - the DOM element the modifier is attached to.
-* `didInsertElement(positional: Array<Any>, named: Object<Any>)` - Called when the modifier is installed on the DOM element.
-* `didReceiveArguments(positional: Array<Any>, named: Object<Any>)` - Called when the modifier is installed **and** anytime the arguments are updated.
-* `didUpdateArguments(positional: Array<Any>, named: Object<Any>)` - Called anytime the arguments are updated but **not** on the initial install.
-* `willDestroyElement(positional: Array<Any>, named: Object<Any>)` - Called when the modifier is about to be destroyed; use for teardown code.
+<dl>
+<dt><code>element</code></dt>
+<dd>the DOM element the modifier is attached to.</dd>
+<dt><code>didInsertElement(positional: Array<Any>, named: Object<Any>)</code></dt>
+<dd>Called when the modifier is installed on the DOM element.</dd>
+<dt><code>didReceiveArguments(positional: Array<Any>, named: Object<Any>)</code></dt>
+<dd>Called when the modifier is installed <strong>and</strong> anytime the arguments are updated.</dd>
+<dt><code>didUpdateArguments(positional: Array<Any>, named: Object<Any>)</code></dt>
+<dd>Called anytime the arguments are updated but <strong>not</strong> on the initial install.</dd>
+<dt><code>willDestroyElement(positional: Array<Any>, named: Object<Any>)</code></dt>
+<dd>Called when the modifier is about to be destroyed; use for teardown code.</dd>
+</dl>
 
 #### Ember Object Import
 
