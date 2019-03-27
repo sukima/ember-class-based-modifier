@@ -215,7 +215,7 @@ class TrackClickModifier extends Modifier {
   didInsertElement([eventName], options) {
     this.trackingCallback = () => this.metrics.trackEvent(eventName, options);
     this.element.addEventListener('click', this.trackingCallback, true);
-  },
+  }
 
   willDestroyElement() {
     this.element.removeEventListener('click', this.trackingCallback, true);
