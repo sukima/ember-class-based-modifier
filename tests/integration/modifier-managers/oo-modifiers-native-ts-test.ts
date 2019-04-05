@@ -6,14 +6,14 @@ import { inject as service } from '@ember-decorators/service';
 import hbs from 'htmlbars-inline-precompile';
 import Modifier from 'ember-oo-modifiers';
 
-module('Integration | Modifier Manager | oo modifier (native)', function(hooks) {
+module('Integration | Modifier Manager | oo modifier (native) (TS)', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function() {
     this.registerModifier = (name, modifier) => {
       this.owner.register(`modifier:${name}`, modifier);
     };
-    this.registerModifierClass = (name, ModifierClass) => {
+    this.registerModifierClass = (name: string, ModifierClass: typeof Modifier) => {
       this.registerModifier(name, Modifier.modifier(ModifierClass));
     };
   });
@@ -33,7 +33,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          didInsertElement([a, b]) {
+          didInsertElement([a, b]: [string, string]) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -46,7 +46,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          didInsertElement(_, { a, b }) {
+          didInsertElement(_: any, { a, b }: { [key: string]: string }) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -71,7 +71,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          didReceiveArguments([a, b]) {
+          didReceiveArguments([a, b]: [string, string]) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -84,7 +84,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          didReceiveArguments(_, { a, b }) {
+          didReceiveArguments(_: any, { a, b }: { [key: string]: string }) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -112,7 +112,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          didUpdateArguments([, a, b]) {
+          didUpdateArguments([, a, b]: [any, string, string]) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -127,7 +127,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          didUpdateArguments(_, { a, b }) {
+          didUpdateArguments(_: any, { a, b }: { [key: string]: string }) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -160,7 +160,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          willDestroyElement([a, b]) {
+          willDestroyElement([a, b]: [string, string]) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
@@ -179,7 +179,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.registerModifierClass(
         'songbird',
         class SongbirdModifier extends Modifier {
-          willDestroyElement(_, { a, b }) {
+          willDestroyElement(_: any, { a, b }: { [key: string]: string }) {
             assert.equal(a, '1');
             assert.equal(b, '2');
           }
