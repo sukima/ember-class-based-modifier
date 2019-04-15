@@ -58,6 +58,17 @@
     source-map "^0.5.0"
     trim-right "^1.0.1"
 
+"@babel/generator@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.4.0.tgz#c230e79589ae7a729fd4631b9ded4dc220418196"
+  integrity sha512-/v5I+a1jhGSKLgZDcmAUZ4K/VePi43eRkUs3yePW1HB1iANOD5tqJXwGSG4BZhSksP8J9ejSlwGeTiiOFZOrXQ==
+  dependencies:
+    "@babel/types" "^7.4.0"
+    jsesc "^2.5.1"
+    lodash "^4.17.11"
+    source-map "^0.5.0"
+    trim-right "^1.0.1"
+
 "@babel/helper-annotate-as-pure@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.0.0.tgz#323d39dd0b50e10c7c06ca7d7638e6864d8c5c32"
@@ -82,7 +93,7 @@
     "@babel/traverse" "^7.1.0"
     "@babel/types" "^7.0.0"
 
-"@babel/helper-create-class-features-plugin@^7.3.0", "@babel/helper-create-class-features-plugin@^7.3.4":
+"@babel/helper-create-class-features-plugin@^7.3.4":
   version "7.3.4"
   resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.3.4.tgz#092711a7a3ad8ea34de3e541644c2ce6af1f6f0c"
   integrity sha512-uFpzw6L2omjibjxa8VGZsJUPL5wJH0zzGKpoz0ccBkzIa6C8kWNUbiBmQ0rgOKWlHJ6qzmfa6lTiGchiV8SC+g==
@@ -93,6 +104,18 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/helper-replace-supers" "^7.3.4"
     "@babel/helper-split-export-declaration" "^7.0.0"
+
+"@babel/helper-create-class-features-plugin@^7.4.0":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.4.3.tgz#5bbd279c6c3ac6a60266b89bbfe7f8021080a1ef"
+  integrity sha512-UMl3TSpX11PuODYdWGrUeW6zFkdYhDn7wRLrOuNVM6f9L+S9CzmDXYyrp3MTHcwWjnzur1f/Op8A7iYZWya2Yg==
+  dependencies:
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-member-expression-to-functions" "^7.0.0"
+    "@babel/helper-optimise-call-expression" "^7.0.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/helper-replace-supers" "^7.4.0"
+    "@babel/helper-split-export-declaration" "^7.4.0"
 
 "@babel/helper-define-map@^7.1.0":
   version "7.1.0"
@@ -216,6 +239,16 @@
     "@babel/traverse" "^7.3.4"
     "@babel/types" "^7.3.4"
 
+"@babel/helper-replace-supers@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-replace-supers/-/helper-replace-supers-7.4.0.tgz#4f56adb6aedcd449d2da9399c2dcf0545463b64c"
+  integrity sha512-PVwCVnWWAgnal+kJ+ZSAphzyl58XrFeSKSAJRiqg5QToTsjL+Xu1f9+RJ+d+Q0aPhPfBGaYfkox66k86thxNSg==
+  dependencies:
+    "@babel/helper-member-expression-to-functions" "^7.0.0"
+    "@babel/helper-optimise-call-expression" "^7.0.0"
+    "@babel/traverse" "^7.4.0"
+    "@babel/types" "^7.4.0"
+
 "@babel/helper-simple-access@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-simple-access/-/helper-simple-access-7.1.0.tgz#65eeb954c8c245beaa4e859da6188f39d71e585c"
@@ -237,6 +270,13 @@
   integrity sha512-MXkOJqva62dfC0w85mEf/LucPPS/1+04nmmRMPEBUB++hiiThQ2zPtX/mEWQ3mtzCEjIJvPY8nuwxXtQeQwUag==
   dependencies:
     "@babel/types" "^7.0.0"
+
+"@babel/helper-split-export-declaration@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-split-export-declaration/-/helper-split-export-declaration-7.4.0.tgz#571bfd52701f492920d63b7f735030e9a3e10b55"
+  integrity sha512-7Cuc6JZiYShaZnybDmfwhY4UYHzI6rlqhWjaIqbsJGsIqPimEYy5uh3akSRLMg65LSdSEnJ8a8/bWQN6u2oMGw==
+  dependencies:
+    "@babel/types" "^7.4.0"
 
 "@babel/helper-wrap-function@^7.1.0":
   version "7.2.0"
@@ -280,6 +320,11 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.3.4.tgz#a43357e4bbf4b92a437fb9e465c192848287f27c"
   integrity sha512-tXZCqWtlOOP4wgCp6RjRvLmfuhnqTLy9VHwRochJBCP2nDm27JnnuFEnXFASVyQNHk36jD1tAammsCEEqgscIQ==
 
+"@babel/parser@^7.4.3":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.4.3.tgz#eb3ac80f64aa101c907d4ce5406360fe75b7895b"
+  integrity sha512-gxpEUhTS1sGA63EGQGuA+WESPR/6tz6ng7tSHFCmaTJK/cGK8y37cBTspX+U2xCAue2IQVvF6Z0oigmjwD8YGQ==
+
 "@babel/plugin-proposal-async-generator-functions@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-async-generator-functions/-/plugin-proposal-async-generator-functions-7.2.0.tgz#b289b306669dce4ad20b0252889a15768c9d417e"
@@ -297,12 +342,20 @@
     "@babel/helper-create-class-features-plugin" "^7.3.4"
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-proposal-decorators@^7.1.2":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.3.0.tgz#637ba075fa780b1f75d08186e8fb4357d03a72a7"
-  integrity sha512-3W/oCUmsO43FmZIqermmq6TKaRSYhmh/vybPfVFwQWdSb8xwki38uAIvknCRzuyHRuYfCYmJzL9or1v0AffPjg==
+"@babel/plugin-proposal-class-properties@^7.3.4":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.4.0.tgz#d70db61a2f1fd79de927eea91f6411c964e084b8"
+  integrity sha512-t2ECPNOXsIeK1JxJNKmgbzQtoG27KIlVE61vTqX0DKR9E9sZlVVxWUtEW9D5FlZ8b8j7SBNCHY47GgPKCKlpPg==
   dependencies:
-    "@babel/helper-create-class-features-plugin" "^7.3.0"
+    "@babel/helper-create-class-features-plugin" "^7.4.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-proposal-decorators@^7.3.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.4.0.tgz#8e1bfd83efa54a5f662033afcc2b8e701f4bb3a9"
+  integrity sha512-d08TLmXeK/XbgCo7ZeZ+JaeZDtDai/2ctapTRsWWkkmy7G/cqz8DQN/HlWG7RR4YmfXxmExsbU3SuCjlM7AtUg==
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.4.0"
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-decorators" "^7.2.0"
 
@@ -735,6 +788,21 @@
     globals "^11.1.0"
     lodash "^4.17.11"
 
+"@babel/traverse@^7.4.0":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.4.3.tgz#1a01f078fc575d589ff30c0f71bf3c3d9ccbad84"
+  integrity sha512-HmA01qrtaCwwJWpSKpA948cBvU5BrmviAief/b3AVw936DtcdsTexlbyzNuDnthwhOQ37xshn7hvQaEQk7ISYQ==
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/generator" "^7.4.0"
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-split-export-declaration" "^7.4.0"
+    "@babel/parser" "^7.4.3"
+    "@babel/types" "^7.4.0"
+    debug "^4.1.0"
+    globals "^11.1.0"
+    lodash "^4.17.11"
+
 "@babel/types@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.0.0-beta.44.tgz#6b1b164591f77dec0a0342aca995f2d046b3a757"
@@ -753,6 +821,15 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@babel/types@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.4.0.tgz#670724f77d24cce6cc7d8cf64599d511d164894c"
+  integrity sha512-aPvkXyU2SPOnztlgo8n9cEiXW755mgyvueUPcpStqdzoSPm0fjO0vQBjLkt3JKJW7ufikfcnMTTPsN1xaTsBPA==
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.17.11"
+    to-fast-properties "^2.0.0"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -760,71 +837,6 @@
   dependencies:
     exec-sh "^0.3.2"
     minimist "^1.2.0"
-
-"@ember-decorators/babel-transforms@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/babel-transforms/-/babel-transforms-3.1.5.tgz#6df543f7f1d862ad54d05555d548805e032f6514"
-  integrity sha512-dTcpIylGj+gU+GM3Se0mVn/NGcIFLDTJYE0h04WtBT+Szon8y0SKFPO4pyEz+NINNU6w+PRP/Y7GsT8txxdrYg==
-  dependencies:
-    "@babel/plugin-proposal-class-properties" "^7.1.0"
-    "@babel/plugin-proposal-decorators" "^7.1.2"
-    ember-cli-babel-plugin-helpers "^1.0.0"
-    ember-cli-version-checker "^2.1.0"
-
-"@ember-decorators/component@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/component/-/component-5.1.4.tgz#bb1fba00fc025366cf1f60252b76c07ac8b6fbbe"
-  integrity sha512-Pe4D/nN0vpRPq9tkeNuKVtWBjTorcqjwlgRHMiiLvzFTVA4LYATyLtRNRGJXNgW1RFn98kHUy7jLyN/EhYw6qg==
-  dependencies:
-    "@ember-decorators/utils" "^5.1.4"
-    ember-cli-babel "^7.1.3"
-
-"@ember-decorators/controller@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/controller/-/controller-5.1.4.tgz#8dd322bccd81a97892979bd44c92c9aa9d4fe272"
-  integrity sha512-+NSxQCWM3I7VBCNRSR1W8JcGUNxS01XZaAP1DgQJO9NONNzHgskS3F/7NtZJxGc0Dao9mMiQ5XRPuVIsTVekQA==
-  dependencies:
-    "@ember-decorators/utils" "^5.1.4"
-    ember-cli-babel "^7.1.3"
-    ember-compatibility-helpers "^1.1.2"
-
-"@ember-decorators/data@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/data/-/data-5.1.4.tgz#08e0fefe83ce855bcc5837bd8ea7feb5ecefb2ac"
-  integrity sha512-VKADr3MF6TobFgivKM8BaLIoFHuxgqR9Jtr5vY84TVEgUsTpbkx7xTYJRNWECzmY9hOJ7myqL/KH3mA+vrq3fw==
-  dependencies:
-    "@ember-decorators/utils" "^5.1.4"
-    ember-cli-babel "^7.1.3"
-    ember-compatibility-helpers "^1.1.2"
-
-"@ember-decorators/object@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/object/-/object-5.1.4.tgz#41ea33864cf742b42e47b6d13b6edf8baa5e7b28"
-  integrity sha512-r3zFXUp8yuHHq+7XKLFvq+xAAap4JK9i8gDjuyu1eW8sxeAszn/3sK5b+l1LT9wSC9aALhYhAIBeNRjcan8APA==
-  dependencies:
-    "@ember-decorators/utils" "^5.1.4"
-    ember-cli-babel "^7.1.3"
-    ember-compatibility-helpers "^1.1.2"
-
-"@ember-decorators/service@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/service/-/service-5.1.4.tgz#a42525245eff3fc327845bdbca4bb38f9e3a6663"
-  integrity sha512-7Lmh8DDe21BhDi5ZKGHHmijl+QwTFBeVLeD6UqDlO8XBwPstPIyVUPXdpSSvqjSxaXx8gj1vke356JAEGxiN9g==
-  dependencies:
-    "@ember-decorators/utils" "^5.1.4"
-    ember-cli-babel "^7.1.3"
-    ember-compatibility-helpers "^1.1.2"
-
-"@ember-decorators/utils@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-5.1.4.tgz#e8a18e614b3bd282c548803fd5e94d49d8fbaeee"
-  integrity sha512-wWJwhVIG1xwY0PbyWx7GHIkEvqDejzJ6trHtHSsTjBhhLbBtQqJN3DCHe4IltCyvizhzusRiFrZJB1g+eWiXCA==
-  dependencies:
-    babel-plugin-debug-macros "^0.2.0"
-    ember-cli-babel "^7.1.3"
-    ember-cli-version-checker "^3.0.0"
-    ember-compatibility-helpers "^1.1.2"
-    semver "^5.6.0"
 
 "@ember/optional-features@^0.6.3":
   version "0.6.4"
@@ -2064,6 +2076,13 @@ babel-plugin-ember-modules-api-polyfill@^2.6.0, babel-plugin-ember-modules-api-p
   integrity sha512-+QXPqmRngp13d7nKWrBcL6iIixpuyMNq107XV1dKvsvAO5BGFQ0mSk7Dl6/OgG+z2F1KquxkFfdXYBwbREQI6A==
   dependencies:
     ember-rfc176-data "^0.3.7"
+
+babel-plugin-ember-modules-api-polyfill@^2.8.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-ember-modules-api-polyfill/-/babel-plugin-ember-modules-api-polyfill-2.9.0.tgz#8503e7b4192aeb336b00265e6235258ff6b754aa"
+  integrity sha512-c03h50291phJ2gQxo/aIOvFQE2c6glql1A7uagE3XbPXpKVAJOUxtVDjvWG6UAB6BC5ynsJfMWvY0w4TPRKIHQ==
+  dependencies:
+    ember-rfc176-data "^0.3.9"
 
 babel-plugin-feature-flags@^0.3.1:
   version "0.3.1"
@@ -5097,6 +5116,11 @@ ember-cli-babel-plugin-helpers@^1.0.0:
   resolved "https://registry.yarnpkg.com/ember-cli-babel-plugin-helpers/-/ember-cli-babel-plugin-helpers-1.0.2.tgz#d4bec0f32febc530e621ea8d66d3365727cb5e6c"
   integrity sha512-tTWmHiIvadgtu0i+Zlb5Jnue69qO6dtACcddkRhhV+m9NfAr+2XNoTKRSeGL8QyRDhfWeo4rsK9dqPrU4PQ+8g==
 
+ember-cli-babel-plugin-helpers@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-babel-plugin-helpers/-/ember-cli-babel-plugin-helpers-1.1.0.tgz#de3baedd093163b6c2461f95964888c1676325ac"
+  integrity sha512-Zr4my8Xn+CzO0gIuFNXji0eTRml5AxZUTDQz/wsNJ5AJAtyFWCY4QtKdoELNNbiCVGt1lq5yLiwTm4scGKu6xA==
+
 ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.10.0, ember-cli-babel@^6.11.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.16.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.8.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.18.0.tgz#3f6435fd275172edeff2b634ee7b29ce74318957"
@@ -5136,6 +5160,33 @@ ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cl
     broccoli-funnel "^2.0.1"
     broccoli-source "^1.1.0"
     clone "^2.1.2"
+    ember-cli-version-checker "^2.1.2"
+    ensure-posix-path "^1.0.2"
+    semver "^5.5.0"
+
+ember-cli-babel@^7.7.3:
+  version "7.7.3"
+  resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.7.3.tgz#f94709f6727583d18685ca6773a995877b87b8a0"
+  integrity sha512-/LWwyKIoSlZQ7k52P+6agC7AhcOBqPJ5C2u27qXHVVxKvCtg6ahNuRk/KmfZmV4zkuw4EjTZxfJE1PzpFyHkXg==
+  dependencies:
+    "@babel/core" "^7.0.0"
+    "@babel/plugin-proposal-class-properties" "^7.3.4"
+    "@babel/plugin-proposal-decorators" "^7.3.0"
+    "@babel/plugin-transform-modules-amd" "^7.0.0"
+    "@babel/plugin-transform-runtime" "^7.2.0"
+    "@babel/polyfill" "^7.0.0"
+    "@babel/preset-env" "^7.0.0"
+    "@babel/runtime" "^7.2.0"
+    amd-name-resolver "^1.2.1"
+    babel-plugin-debug-macros "^0.3.0"
+    babel-plugin-ember-modules-api-polyfill "^2.8.0"
+    babel-plugin-module-resolver "^3.1.1"
+    broccoli-babel-transpiler "^7.1.2"
+    broccoli-debug "^0.6.4"
+    broccoli-funnel "^2.0.1"
+    broccoli-source "^1.1.0"
+    clone "^2.1.2"
+    ember-cli-babel-plugin-helpers "^1.1.0"
     ember-cli-version-checker "^2.1.2"
     ensure-posix-path "^1.0.2"
     semver "^5.5.0"
@@ -5466,6 +5517,14 @@ ember-cli-version-checker@^3.0.0, ember-cli-version-checker@^3.0.1:
     resolve-package-path "^1.1.1"
     semver "^5.6.0"
 
+ember-cli-version-checker@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/ember-cli-version-checker/-/ember-cli-version-checker-3.1.3.tgz#7c9b4f5ff30fdebcd480b1c06c4de43bb51c522c"
+  integrity sha512-PZNSvpzwWgv68hcXxyjREpj3WWb81A7rtYNQq1lLEgrWIchF8ApKJjWP3NBpHjaatwILkZAV8klair5WFlXAKg==
+  dependencies:
+    resolve-package-path "^1.2.6"
+    semver "^5.6.0"
+
 ember-cli@~3.8.1:
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-3.8.1.tgz#2a4f66cf9da3c9665658690e615479af32749807"
@@ -5664,18 +5723,14 @@ ember-copy@^1.0.0:
     semver "^5.6.0"
     silent-error "^1.1.1"
 
-ember-decorators@^5.1.3:
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/ember-decorators/-/ember-decorators-5.1.4.tgz#d574fbfab85bb3938f1dd18f5a0b1569ea0eb4cb"
-  integrity sha512-0qpN65A4lr0NBkkdWUJGn6VlaA6WoFXAUrgWruF53UK3tszb0nVK/EPN2zRU06I/7WgroI69VywdVPe3TRQ/iw==
+ember-decorators-polyfill@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ember-decorators-polyfill/-/ember-decorators-polyfill-1.0.3.tgz#819eb5ecaa9d89e50265051d128e0dbf2a74d33d"
+  integrity sha512-PQwMdltzabYlnUMs/XjXaIcXQvSKl9ate3OM39uJLByfNGvxGJW2M23yZC7wIffJkwMSJUCpEu/fMl9K7XtnRw==
   dependencies:
-    "@ember-decorators/component" "^5.1.4"
-    "@ember-decorators/controller" "^5.1.4"
-    "@ember-decorators/data" "^5.1.4"
-    "@ember-decorators/object" "^5.1.4"
-    "@ember-decorators/service" "^5.1.4"
-    ember-cli-babel "^7.1.3"
-    semver "^5.5.0"
+    ember-cli-babel "^7.1.2"
+    ember-cli-version-checker "^3.1.3"
+    ember-compatibility-helpers "^1.2.0"
 
 ember-disable-prototype-extensions@^1.1.3:
   version "1.1.3"
@@ -5841,6 +5896,11 @@ ember-rfc176-data@^0.3.5, ember-rfc176-data@^0.3.7:
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.3.7.tgz#ecff7d74987d09296d3703343fed934515a4be33"
   integrity sha512-AbTlD+q7sfyrD4diZqE7r9Y9/Je+HntVn7TlpHAe+nP5BNXxUXJIfDs5w5e3MxPcMs6Dz/yY90YfW8h1oKEvGg==
+
+ember-rfc176-data@^0.3.9:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/ember-rfc176-data/-/ember-rfc176-data-0.3.9.tgz#44b6e051ead6c044ea87bd551f402e2cf89a7e3d"
+  integrity sha512-EiTo5YQS0Duy0xp9gCP8ekzv9vxirNi7MnIB4zWs+thtWp/mEKgf5mkiiLU2+oo8C5DuavVHhoPQDmyxh8Io1Q==
 
 ember-router-generator@^1.2.3:
   version "1.2.3"
@@ -11252,6 +11312,14 @@ resolve-package-path@^1.0.11, resolve-package-path@^1.1.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/resolve-package-path/-/resolve-package-path-1.2.4.tgz#814c5fcfb5f6e4151d95ec6e5653707c43706670"
   integrity sha512-AOIfR/AauBM1w1Oq9swqGxUjL4PW7bMztN7UCQ4KWg9AR2t03bGb9faegZbE0meAOHlntAni/4kXkcsQ7dWLPQ==
+  dependencies:
+    path-root "^0.1.1"
+    resolve "^1.10.0"
+
+resolve-package-path@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/resolve-package-path/-/resolve-package-path-1.2.6.tgz#48f5d69a5b3a0ea68f7b9c7398459dd4125807c7"
+  integrity sha512-He6cGWU74tJ6wLYSKrbvWOfIXf2tUu5RcBWqX/2K9Ju00CncF5WRdCOJQisqCtaULcqIqpLvMtz8ZjfpwlBwqg==
   dependencies:
     path-root "^0.1.1"
     resolve "^1.10.0"
