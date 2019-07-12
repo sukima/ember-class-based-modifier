@@ -4,11 +4,24 @@ import { render, settled } from '@ember/test-helpers';
 import Service, { inject as service } from '@ember/service';
 import hbs from 'htmlbars-inline-precompile';
 import { Modifier } from 'ember-oo-modifiers';
+import { registerDeprecationHandler } from '@ember/debug';
+
+let isRegistered = false;
+let deprecations;
 
 module('Integration | Modifier Manager | oo modifier (classic)', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function() {
+    deprecations = [];
+    if (!isRegistered) {
+      registerDeprecationHandler((message, options, next) => {
+        deprecations.push(message);
+        next(message, options);
+      });
+      isRegistered = true;
+    }
+
     this.registerModifier = (name, modifier) => {
       this.owner.register(`modifier:${name}`, modifier);
     };
@@ -494,6 +507,19 @@ module('Integration | Modifier Manager | oo modifier (classic)', function(hooks)
         })
       );
       await render(hbs`<h1 {{songbird}}>Hello</h1>`);
+    });
+  });
+
+  module('Modifier.modifier deprecations', function() {
+    test('rendering with Modifier.modifier causes deprecation warning', async function(assert) {
+      this.registerModifierClass(
+        'songbird',
+        Modifier.modifier(
+          Modifier.extend({})
+        )
+      );
+      await render(hbs`<h1 {{songbird}}>Hello</h1>`);
+      assert.ok( deprecations.includes("Modifier.modifier is deprecated.  Export the class directly.  See https://github.com/sukima/ember-oo-modifiers/pull/8") );
     });
   });
 });
