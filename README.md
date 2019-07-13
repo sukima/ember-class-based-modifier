@@ -54,7 +54,7 @@ const ScrollTopModifier = Modifier.extend({
   }
 });
 
-export default Modifier.modifier(ScrollTopModifier);
+export default ScrollTopModifier;
 ```
 
 Then, use it in your template:
@@ -71,13 +71,11 @@ Then, use it in your template:
 // app/modifiers/scroll-top.js
 import Modifier from 'ember-oo-modifiers';
 
-class ScrollTopModifier extends Modifier {
+export default class ScrollTopModifier extends Modifier {
   didReceiveArguments([scrollPosition]) {
     this.element.scrollTop = scrollPosition;
   }
 }
-
-export default Modifier.modifier(ScrollTopModifier);
 ```
 
 Then, use it in your template:
@@ -120,7 +118,7 @@ const MoveRandomlyModifier = Modifier.extend({
   }
 });
 
-export default Modifier.modifier(MoveRandomlyModifier);
+export default MoveRandomlyModifier;
 ```
 
 ```hbs
@@ -138,7 +136,7 @@ import Modifier from 'ember-oo-modifiers';
 const { random, round } = Math;
 const INTERVAL_DELAY = 1000;
 
-class MoveRandomlyModifier extends Modifier {
+export default class MoveRandomlyModifier extends Modifier {
   updateTransform() {
     let top = round(random() * 500);
     let left = round(random() * 500);
@@ -154,8 +152,6 @@ class MoveRandomlyModifier extends Modifier {
     this.timer = null;
   }
 }
-
-export default Modifier.modifier(MoveRandomlyModifier);
 ```
 
 ```hbs
@@ -191,7 +187,7 @@ const TrackClickModifier = Modifier.extend({
   }
 });
 
-export default Modifier.modifier(TrackClickModifier);
+export default TrackClickModifier;
 ```
 
 Then, you could use this in your template:
@@ -209,7 +205,7 @@ Then, you could use this in your template:
 import { inject as service } from '@ember-decorators/service';
 import Modifier from 'ember-oo-modifiers';
 
-class TrackClickModifier extends Modifier {
+export default class TrackClickModifier extends Modifier {
   @service metrics
 
   didInsertElement([eventName], options) {
@@ -222,8 +218,6 @@ class TrackClickModifier extends Modifier {
     this.trackingCallback = null;
   }
 }
-
-export default Modifier.modifier(TrackClickModifier);
 ```
 
 Then, you could use this in your template:
@@ -259,7 +253,7 @@ import { Modifier } from 'ember-oo-modifiers';
 const MyModifier = Modifier.extend({
 });
 
-export default Modifier.modifier(MyModifier);
+export default MyModifier;
 ```
 
 #### Native Class Import
@@ -267,10 +261,8 @@ export default Modifier.modifier(MyModifier);
 ```js
 import Modifier from 'ember-oo-modifiers';
 
-class MyModifier extends Modifier {
+export default class MyModifier extends Modifier {
 }
-
-export default Modifier.modifier(MyModifier);
 ```
 
 Contributing
