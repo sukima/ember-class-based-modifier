@@ -86,6 +86,23 @@ Then, use it in your template:
 </div>
 ```
 
+### `modifier` function
+
+The native class example can be implemented using `modifier` function, which calls passed function argument on `didReceiveArguments` with these arguments
+
+- `element` on which is the modifier installed,
+- `array` of positional arguments passed on the modifier,
+- `object` of named arguments passed on the modifier.
+
+```js
+// app/modifiers/scroll-top.js
+import { modifier } from 'ember-oo-modifiers';
+
+export default modifier(function scrollTop(element, [scrollPosition]) {
+  element.scrollTop = scrollPosition;
+})
+```
+
 ## Example with Cleanup
 
 If the functionality you add in the modifier needs to be torn down when the element is removed, you can return a function for the teardown method.
