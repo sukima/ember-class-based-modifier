@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import createManager from './create-manager';
 import { setOwner } from '@ember/application';
 import { setProperties } from '@ember/object';
-import createManager from './create-manager';
 import  { deprecate } from '@ember/application/deprecations';
+import { setModifierManager } from './utils';
 
 class Modifier {
   constructor(attrs = {}, _owner) {
@@ -21,6 +21,6 @@ class Modifier {
   }
 }
 
-Ember._setModifierManager(createManager, Modifier);
+setModifierManager(createManager, Modifier);
 
 export default Modifier;

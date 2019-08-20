@@ -22,7 +22,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.7.3",
+    "ember-cli-babel": "^7.10.0",
     "ember-modifier-manager-polyfill": "^1.0.3"
   },
   "devDependencies": {
