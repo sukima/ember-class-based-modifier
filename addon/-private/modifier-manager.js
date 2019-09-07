@@ -9,9 +9,10 @@ function triggerLifecycleHook(instance, hookName, args) {
 }
 
 export default class ModifierManager {
+  capabilities = capabilities('3.13');
+
   constructor(owner) {
     this.owner = owner;
-    this.capabilities = capabilities('3.13');
   }
 
   createModifier(Klass, args) {
