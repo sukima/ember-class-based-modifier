@@ -4,7 +4,7 @@ import { render, settled } from '@ember/test-helpers';
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import hbs from 'htmlbars-inline-precompile';
-import Modifier from 'ember-oo-modifiers';
+import Modifier, { modifier } from 'ember-oo-modifiers';
 import { registerDeprecationHandler } from '@ember/debug';
 
 let isRegistered = false;
@@ -188,7 +188,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       await render(hbs`<h1 {{songbird a="1" b="2"}}>Hey</h1>`);
     });
   });
-  
+
   module('didUpdateArguments with calling deprecated Modifier.modifier', function() {
     test('it has DOM element on this.element', async function(assert) {
       this.value = 0;
@@ -338,7 +338,7 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       this.set('shouldRender', false);
     });
   });
-  
+
   module('willDestroyElement without calling Modifier.modifier', function() {
     test('it has DOM element on this.element', async function(assert) {
       this.shouldRender = true;
@@ -514,4 +514,41 @@ module('Integration | Modifier Manager | oo modifier (native)', function(hooks) 
       assert.ok( deprecations.includes("Modifier.modifier is deprecated.  Export the class directly.  See https://github.com/sukima/ember-oo-modifiers/pull/8") );
     });
   });
+
+  module('modifier function', function() {
+    test('it calls passed function on `didReceiveArguments`', async function(assert) {
+      this.positional = '1';
+      this.named = 'a';
+
+      this.registerModifierClass(
+        'songbird',
+        modifier(function songbird(element, [positional], { named }) {
+          assert.step(element.tagName);
+          assert.step(positional);
+          assert.step(named);
+        })
+      );
+
+      await render(hbs`<h1 {{songbird this.positional named=this.named}}>Hello</h1>`);
+
+      this.set('positional', '2');
+      this.set('named', 'b');
+      await settled();
+
+      assert.verifySteps([
+        'H1', '1', 'a',
+        'H1', '2', 'a',
+        'H1', '2', 'b'
+      ]);
+    });
+
+    test('it asserts when argument is not a function', function(assert) {
+      assert.throws(() => {
+        this.registerModifierClass(
+          'songbird',
+          modifier(true)
+        );
+      }, /You must pass a function as the first argument to the `modifier` function/);
+    });
+  })
 });
