@@ -1,4 +1,4 @@
-import { capabilities } from './utils';
+import { capabilities } from '@ember/modifier';
 
 function triggerLifecycleHook(instance, hookName, args) {
   // Checking for undefined as a style choice came from

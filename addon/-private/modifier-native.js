@@ -2,7 +2,7 @@ import createManager from './create-manager';
 import { setOwner } from '@ember/application';
 import { setProperties } from '@ember/object';
 import  { deprecate } from '@ember/application/deprecations';
-import { setModifierManager } from './utils';
+import { setModifierManager } from '@ember/modifier';
 import { assert } from '@ember/debug';
 
 class Modifier {

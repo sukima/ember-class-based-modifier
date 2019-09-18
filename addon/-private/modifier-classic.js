@@ -1,7 +1,7 @@
 import EmberObject from '@ember/object';
 import createManager from './create-manager';
 import  { deprecate } from '@ember/application/deprecations';
-import { setModifierManager } from './utils';
+import { setModifierManager } from '@ember/modifier';
 
 const Modifier = EmberObject.extend({
   element: null,
