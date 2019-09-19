@@ -10,8 +10,10 @@ Compatibility
 
 This is currently compatible with:
 
-* Ember.js v2.18 or above
+* Ember.js v3.4 or above
 * Ember CLI v2.13 or above
+
+(Support for v2.18 is blocked by: https://github.com/rwjblue/ember-modifier-manager-polyfill/pull/11)
 
 Installation
 ------------------------------------------------------------------------------
@@ -364,6 +366,7 @@ Whenever possible, it is recommended that you use the default "modern" API inste
 * Added `willDestroy`, `isDestroying` and `isDestroyed` with the same semantics as Ember objects and Glimmer components.
 * Improved test coverage.
 * Updated README.
+* Added CI.
 
 Contributing
 ------------------------------------------------------------------------------
