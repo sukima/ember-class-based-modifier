@@ -12,6 +12,7 @@
 
 # misc
 /coverage/
+/config/addon-docs.js
 !.*
 
 # ember-try
