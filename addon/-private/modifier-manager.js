@@ -1,3 +1,5 @@
+import { capabilities } from '@ember/modifier';
+
 function triggerLifecycleHook(instance, hookName, args) {
   // Checking for undefined as a style choice came from
   // https://emberjs.github.io/rfcs/0373-Element-Modifier-Managers.html
@@ -7,6 +9,8 @@ function triggerLifecycleHook(instance, hookName, args) {
 }
 
 export default class ModifierManager {
+  capabilities = capabilities('3.13');
+
   constructor(owner) {
     this.owner = owner;
   }

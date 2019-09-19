@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import createManager from './create-manager';
 import { setOwner } from '@ember/application';
 import { setProperties } from '@ember/object';
-import createManager from './create-manager';
-import { deprecate } from '@ember/application/deprecations';
+import  { deprecate } from '@ember/application/deprecations';
+import { setModifierManager } from '@ember/modifier';
 import { assert } from '@ember/debug';
 
 class Modifier {
@@ -22,7 +22,7 @@ class Modifier {
   }
 }
 
-Ember._setModifierManager(createManager, Modifier);
+setModifierManager(createManager, Modifier);
 
 export function modifier(modifierFn) {
   assert(
