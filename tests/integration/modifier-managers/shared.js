@@ -31,7 +31,7 @@ export function testHooks(factory) {
   });
 
   testHook({
-    name: 'didInsertElement',
+    name: 'didInstall',
     insert: true,
     update: false,
     destroy: false,
@@ -40,7 +40,7 @@ export function testHooks(factory) {
   });
 
   testHook({
-    name: 'willDestroyElement',
+    name: 'willRemove',
     insert: false,
     update: false,
     destroy: true,
@@ -372,7 +372,7 @@ function testHooksOrdering(factory) {
 
       assert.step('insert');
 
-      await assertHooks(['constructor', 'didReceiveArguments', 'didInsertElement'], () => {
+      await assertHooks(['constructor', 'didReceiveArguments', 'didInstall'], () => {
         this.set('isShowing', true);
       });
 
@@ -390,7 +390,7 @@ function testHooksOrdering(factory) {
 
       assert.step('destroy');
 
-      await assertHooks(['willDestroyElement', 'willDestroy'], () => {
+      await assertHooks(['willRemove', 'willDestroy'], () => {
         this.set('isShowing', false);
       });
 

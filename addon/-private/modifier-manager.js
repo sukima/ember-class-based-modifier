@@ -12,7 +12,7 @@ class ClassBasedModifierManager {
   installModifier(instance, element) {
     instance.element = element;
     instance.didReceiveArguments();
-    instance.didInsertElement();
+    instance.didInstall();
   }
 
   updateModifier(instance, args) {
@@ -23,7 +23,7 @@ class ClassBasedModifierManager {
   }
 
   destroyModifier(instance) {
-    instance.willDestroyElement();
+    instance.willRemove();
     instance.element = null;
 
     if (isNative(instance)) {

@@ -96,9 +96,9 @@ export default class ScrollContainerComponent extends Component {
 
 ## Example with Cleanup
 
-If the functionality you add in the modifier needs to be torn down when the element is removed, you can use the `willDestroyElement` hook.
+If the functionality you add in the modifier needs to be torn down when the modifier is removed, you can use the `willRemove` hook.
 
-For example, if you want to have your elements dance randomly on the page using `setInterval`, but you wanted to make sure that was canceled when the element was removed, you could do this:
+For example, if you want to have your elements dance randomly on the page using `setInterval`, but you wanted to make sure that was canceled when the modifier was removed, you could do this:
 
 ```js
 // app/modifiers/move-randomly.js
@@ -127,11 +127,15 @@ export default class MoveRandomlyModifier extends Modifier {
     this.element.style.transform = `translate(${left}px, ${top}px)`;
   }
 
-  didInsertElement() {
+  didReceiveArguments() {
+    if (this.setIntervalId !== null) {
+      clearInterval(this.setIntervalId);
+    }
+
     this.setIntervalId = setInterval(this.moveElement, this.delay);
   }
 
-  willDestroyElement() {
+  willRemove() {
     clearInterval(this.setIntervalId);
     this.setIntervalId = null;
   }
@@ -184,11 +188,11 @@ export default class TrackClickModifier extends Modifier {
     this.metrics.trackEvent(this.eventName, this.options);
   }
 
-  didInsertElement() {
+  didInstall() {
     this.element.addEventListener('click', this.onClick, true);
   }
 
-  willDestroyElement() {
+  willRemove() {
     this.element.removeEventListener('click', this.onClick, true);
   }
 }
@@ -260,12 +264,19 @@ export default Modifier.extend({
     this.element.style.transform = `translate(${left}px, ${top}px)`;
   }),
 
-  didInsertElement() {
-    let setIntervalId = setInterval(this.moveElement, this.get('delay'));
+  didReceiveArguments() {
+    let setIntervalId = this.get('setIntervalId');
+
+    if (setIntervalId !== null) {
+      clearInterval(setIntervalId);
+    }
+
+    setIntervalId = setInterval(this.moveElement, this.get('delay'));
+
     this.set('setIntervalId', setIntervalId);
   },
 
-  willDestroyElement() {
+  willRemove() {
     clearInterval(this.setIntervalId);
     this.setIntervalId = null;
   }
@@ -304,11 +315,11 @@ export default Modifier.extend({
     this.metrics.trackEvent(this.get('eventName'), this.get('options'));
   }),
 
-  didInsertElement() {
+  didInstall() {
     this.element.addEventListener('click', this.onClick, true);
   }
 
-  willDestroyElement() {
+  willRemove() {
     this.element.removeEventListener('click', this.onClick, true);
   }
 });

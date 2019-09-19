@@ -12,8 +12,8 @@ const ClassBasedModifier = EmberObject.extend({
 
   didReceiveArguments() {},
   didUpdateArguments() {},
-  didInsertElement() {},
-  willDestroyElement() {}
+  didInstall() {},
+  willRemove() {}
 });
 
 setModifierManager(() => Manager, ClassBasedModifier);

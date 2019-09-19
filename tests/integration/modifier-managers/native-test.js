@@ -23,12 +23,12 @@ module('Integration | Modifier Manager | class-based modifier (native class)', f
       callback('didUpdateArguments', this);
     }
 
-    didInsertElement() {
-      callback('didInsertElement', this);
+    didInstall() {
+      callback('didInstall', this);
     }
 
-    willDestroyElement() {
-      callback('willDestroyElement', this);
+    willRemove() {
+      callback('willRemove', this);
     }
 
     willDestroy() {

@@ -27,8 +27,8 @@ export default class ClassBasedModifier {
 
   didReceiveArguments() {}
   didUpdateArguments() {}
-  didInsertElement() {}
-  willDestroyElement() {}
+  didInstall() {}
+  willRemove() {}
   willDestroy() {}
 
   get isDestroying() {

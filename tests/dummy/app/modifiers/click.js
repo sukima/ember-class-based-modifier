@@ -5,11 +5,11 @@ export default class ClickModifier extends Modifier {
     alert('You clicked me!');
   }
 
-  didInsertElement() {
+  didInstall() {
     this.element.addEventListener('click', this.callback);
   }
 
-  willDestroyElement() {
+  willRemove() {
     this.element.removeEventListener('click', this.callback);
   }
 }
