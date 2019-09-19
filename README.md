@@ -1,7 +1,7 @@
 ember-class-based-modifier
 ==============================================================================
 
-[![Build Status](https://travis-ci.org/sukima/ember-class-based-modifier.svg?branch=master)](https://travis-ci.org/chancancode/ember-class-based-modifier)
+[![Build Status](https://travis-ci.org/sukima/ember-class-based-modifier.svg?branch=master)](https://travis-ci.org/sukima/ember-class-based-modifier)
 
 > This is the next iteration of [ember-oo-modifiers](https://github.com/sukima/ember-class-based-modifier/tree/maintenance/ember-oo-modifiers) with some breaking changes to the API. If you are looking for the previous documentation, select the version you are using in the tags dropdown at the top of the page. For a list of API differences, see [here](#api-differences-from-ember-oo-modifiers)
 
