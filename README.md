@@ -354,14 +354,14 @@ Whenever possible, it is recommended that you use the default "modern" API inste
 
 ## Differences from [ember-oo-modifiers](https://github.com/sukima/ember-oo-modifiers)
 
-* Renamed package to `ember-class-based-modifier`. `class-based` was choose over `oo` for its familiarity with Ember users, as the same name is used for the "class-based helpers" API. It also avoids an unnecessary jargon. `modifiers` (plural) was renamed to `modifier` (singular) since this package provides a single base class, instead of a collection of utility modifiers. Choosing a different name also facilitated the remaining breaking changes.
+* Renamed package to `ember-class-based-modifier`. `class-based` was chosen over `oo` for its familiarity with Ember users, as the same name is used for the "class-based helpers" API. It also avoids an unnecessary jargon. `modifiers` (plural) was renamed to `modifier` (singular) since this package provides a single base class, instead of a collection of utility modifiers. Choosing a different package name also facilitated the remaining breaking changes.
 * No `Modifier.modifier()` function.
 * Classic API is located at `ember-class-based-modifier/classic`. The old import path (`import Modifier from ...` vs `import { Modifier } from ...`) was too subtle and very easy to miss.
-* Named arguments do not become properties on the modifier instance. This was an classic-component-ism that does not fit with modern Ember (Glimmer components) idioms. The old behavior was also buggy and unreliable, as their values do not get updated after construction.
-* Arguments do not get passed to life-cycle hooks. Instead, they are available at `this.args`. This mirrors the life-cycle hooks in both classic and Glimmer components.
+* Named arguments do not become properties on the modifier instance. This was a classic-component-ism that does not fit with modern Ember (Glimmer components) idioms. The old behavior was also buggy and unreliable, as their values do not get updated after construction.
+* Arguments are not passed to life-cycle hooks. Instead, they are available at `this.args`. This mirrors the life-cycle hooks in both classic and Glimmer components.
 * Renamed `didInsertElement` to `didInstall` and `willDestroyElement` to `willRemove`, as the old names were misleading. See [this tweet](https://twitter.com/chancancode/status/1109502949972074496).
-* Corrected lifecycle hook order: `didReceiveArguments` before `didInstall`, and `didUpdateArguments` before `didReceiveArguments`, mirroring the classic component life-cycle hooks' ordering.
-* Added `willDestroy`, `isDestroying` and `isDestroyed` with the same semantics as Ember object and Glimmer components.
+* Corrected life-cycle hook order: `didReceiveArguments` before `didInstall`, and `didUpdateArguments` before `didReceiveArguments`, mirroring the classic component life-cycle hooks' ordering.
+* Added `willDestroy`, `isDestroying` and `isDestroyed` with the same semantics as Ember objects and Glimmer components.
 * Improved test coverage.
 * Updated README.
 
