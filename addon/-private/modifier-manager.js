@@ -1,40 +1,37 @@
-function triggerLifecycleHook(instance, hookName, args) {
-  // Checking for undefined as a style choice came from
-  // https://emberjs.github.io/rfcs/0373-Element-Modifier-Managers.html
-  if (instance[hookName] !== undefined) {
-    return instance[hookName](args.positional, args.named);
-  }
-}
+import { capabilities } from '@ember/modifier';
+import { set } from '@ember/object';
+import { destroy, isNative } from './modifier-native'
 
-export default class ModifierManager {
-  constructor(owner) {
-    this.owner = owner;
+class ClassBasedModifierManager {
+  capabilities = capabilities('3.13');
+
+  createModifier(factory, args) {
+    return factory.create({ args });
   }
 
-  createModifier(Klass, args) {
-    let isEmberObject = Klass.class.create !== undefined;
-
-    if (isEmberObject) {
-      return Klass.create(args.named);
-    } else {
-      let Constructor = Klass.class;
-      return new Constructor(args.named, this.owner);
-    }
-  }
-
-  installModifier(instance, element, args) {
+  installModifier(instance, element) {
     instance.element = element;
-    triggerLifecycleHook(instance, 'didInsertElement', args);
-    triggerLifecycleHook(instance, 'didReceiveArguments', args);
+    instance.didReceiveArguments();
+    instance.didInsertElement();
   }
 
   updateModifier(instance, args) {
-    triggerLifecycleHook(instance, 'didReceiveArguments', args);
-    triggerLifecycleHook(instance, 'didUpdateArguments', args);
+    // TODO: this should be an args proxy
+    set(instance, 'args', args);
+    instance.didUpdateArguments();
+    instance.didReceiveArguments();
   }
 
-  destroyModifier(instance, args) {
-    triggerLifecycleHook(instance, 'willDestroyElement', args);
+  destroyModifier(instance) {
+    instance.willDestroyElement();
     instance.element = null;
+
+    if (isNative(instance)) {
+      destroy(instance);
+    } else {
+      instance.destroy();
+    }
   }
 }
+
+export default new ClassBasedModifierManager();
