@@ -1,7 +1,9 @@
 ember-class-based-modifier
 ==============================================================================
 
-This is a fork of [ember-oo-modifiers](https://github.com/sukima/ember-oo-modifiers) with some modifications to the API.
+[![Build Status](https://travis-ci.org/sukima/ember-class-based-modifier.svg?branch=master)](https://travis-ci.org/chancancode/ember-class-based-modifier)
+
+> This is the next iteration of [ember-oo-modifiers](https://github.com/sukima/ember-class-based-modifier/tree/maintenance/ember-oo-modifiers) with some breaking changes to the API. If you are looking for the previous documentation, select the version you are using in the tags dropdown at the top of the page. For a list of API differences, see [here](#api-differences-from-ember-oo-modifiers)
 
 This addon provides a class-based API for authoring [element modifiers](https://blog.emberjs.com/2019/03/06/coming-soon-in-ember-octane-part-4.html) in Ember, similar to the [class-based helper](https://octane-guides-preview.emberjs.com/release/templates/writing-helpers/#toc_class-based-helpers) API.
 
@@ -27,7 +29,7 @@ Usage
 
 This addon does not provide any modifiers out of the box; instead, this library allows you to write your own.
 
-Much of this addon was based on [ember-oo-modifiers](https://github.com/sukima/ember-oo-modifiers), and, in turn, [ember-functional-modifiers](https://github.com/spencer516/ember-functional-modifiers).
+Much of this addon was based on [ember-oo-modifiers](https://github.com/sukima/ember-class-based-modifier/tree/maintenance/ember-oo-modifiers), and, in turn, [ember-functional-modifiers](https://github.com/spencer516/ember-functional-modifiers).
 
 ## Example without Cleanup
 
@@ -354,19 +356,17 @@ Whenever possible, it is recommended that you use the default "modern" API inste
 <dd>Called when the modifier itself is about to be destroyed; use for teardown code. Called after <code>willRemove</code>. The <code>element</code> is no longer available at this point (i.e. its value is <code>null</code> during teardown).</dd>
 </dl>
 
-## Differences from [ember-oo-modifiers](https://github.com/sukima/ember-oo-modifiers)
+## API differences from [ember-oo-modifiers](https://github.com/sukima/ember-class-based-modifier/tree/maintenance/ember-oo-modifiers)
 
-* Renamed package to `ember-class-based-modifier`. `class-based` was chosen over `oo` for its familiarity with Ember users, as the same name is used for the "class-based helpers" API. It also avoids an unnecessary jargon. `modifiers` (plural) was renamed to `modifier` (singular) since this package provides a single base class, instead of a collection of utility modifiers. Choosing a different package name also facilitated the remaining breaking changes.
+* Renamed package to `ember-class-based-modifier`.
 * No `Modifier.modifier()` function.
-* Classic API is located at `ember-class-based-modifier/classic`. The old import path (`import Modifier from ...` vs `import { Modifier } from ...`) was too subtle and very easy to miss.
-* Named arguments do not become properties on the modifier instance. This was a classic-component-ism that does not fit with modern Ember (Glimmer components) idioms. The old behavior was also buggy and unreliable, as their values do not get updated after construction.
-* Arguments are not passed to life-cycle hooks. Instead, they are available at `this.args`. This mirrors the life-cycle hooks in both classic and Glimmer components.
-* Renamed `didInsertElement` to `didInstall` and `willDestroyElement` to `willRemove`, as the old names were misleading. See [this tweet](https://twitter.com/chancancode/status/1109502949972074496).
-* Corrected life-cycle hook order: `didReceiveArguments` before `didInstall`, and `didUpdateArguments` before `didReceiveArguments`, mirroring the classic component life-cycle hooks' ordering.
+* Classic API is located at `ember-class-based-modifier/classic`.
+* Arguments, both positional and named, are available on `this.args`.
+* Named arguments do not become properties on the modifier instance.
+* Arguments are not passed to life-cycle hooks.
+* Renamed `didInsertElement` to `didInstall` and `willDestroyElement` to `willRemove`. This is to emphasize that when the modifier is installed or removed, the underlying element may not be freshly inserted or about to go away. Therefore, it is important to perform clean-up work in the `willRemove` to reverse any modifications you made to the element.
+* Changed life-cycle hook order: `didReceiveArguments` fires before `didInstall`, and `didUpdateArguments` fires before `didReceiveArguments`, mirroring the classic component life-cycle hooks ordering.
 * Added `willDestroy`, `isDestroying` and `isDestroyed` with the same semantics as Ember objects and Glimmer components.
-* Improved test coverage.
-* Updated README.
-* Added CI.
 
 Contributing
 ------------------------------------------------------------------------------
