@@ -1,16 +1,15 @@
-import Modifier from 'ember-oo-modifiers';
+import Modifier from 'ember-class-based-modifier';
 
-const ClickModifier = Modifier.extend({
-  didInsertElement() {
-    this._super(...arguments);
-    this.callback = () => alert('You clicked me!');
+export default class ClickModifier extends Modifier {
+  callback() {
+    alert('You clicked me!');
+  }
+
+  didInstall() {
     this.element.addEventListener('click', this.callback);
-  },
+  }
 
-  willDestroyElement() {
-    this._super(...arguments);
+  willRemove() {
     this.element.removeEventListener('click', this.callback);
   }
-});
-
-export default Modifier.modifier(ClickModifier);
+}

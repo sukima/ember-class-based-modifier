@@ -1,40 +1,72 @@
-import createManager from './create-manager';
-import { setOwner } from '@ember/application';
-import { setProperties } from '@ember/object';
-import  { deprecate } from '@ember/application/deprecations';
+import Ember from 'ember';
+import { getOwner, setOwner } from '@ember/application';
 import { setModifierManager } from '@ember/modifier';
-import { assert } from '@ember/debug';
+import { schedule } from '@ember/runloop';
+import Manager from './modifier-manager';
 
-class Modifier {
-  constructor(attrs = {}, _owner) {
-    setOwner(this, _owner);
-    setProperties(this, attrs);
+const IS_NATIVE = Symbol('native');
+const DESTROYING = Symbol('destroying');
+const DESTROYED = Symbol('destroyed');
+
+export default class ClassBasedModifier {
+  static create(options) {
+    let owner = getOwner(options);
+    let { args } = options;
+    return new this(owner, args);
   }
 
-  didInsertElement() {}
-  didRecieveArguments() {}
+  [IS_NATIVE] = true;
+  [DESTROYING] = false;
+  [DESTROYED] = false;
+
+  constructor(owner, args) {
+    setOwner(this, owner);
+    this.element = null;
+    this.args = args;
+  }
+
+  didReceiveArguments() {}
   didUpdateArguments() {}
-  willDestroyElement() {}
+  didInstall() {}
+  willRemove() {}
+  willDestroy() {}
 
-  static modifier(Klass) {
-    deprecate("Modifier.modifier is deprecated.  Export the class directly.  See https://github.com/sukima/ember-oo-modifiers/pull/8", false, { id: 'modifier-call', until: "1.0.0" });
-    return Klass;
+  get isDestroying() {
+    return this[DESTROYING];
+  }
+
+  get isDestroyed() {
+    return this[DESTROYED];
   }
 }
 
-setModifierManager(createManager, Modifier);
+setModifierManager(() => Manager, ClassBasedModifier);
 
-export function modifier(modifierFn) {
-  assert(
-    'You must pass a function as the first argument to the `modifier` function',
-    modifierFn !== undefined && typeof modifierFn === 'function'
-  );
-
-  return class extends Modifier {
-    didReceiveArguments(positional, named) {
-      modifierFn(this.element, positional, named);
-    }
-  }
+export function isNative(modifier) {
+  return modifier[IS_NATIVE] === true;
 }
 
-export default Modifier;
+export function destroy(modifier) {
+  if (modifier[DESTROYING]) {
+    return;
+  }
+
+  let meta = Ember.meta(modifier);
+
+  meta.setSourceDestroying();
+  modifier[DESTROYING] = true;
+
+  schedule('actions', modifier, modifier.willDestroy);
+  schedule('destroy', undefined, scheduleDestroy, modifier, meta);
+}
+
+function scheduleDestroy(modifier, meta) {
+  if (modifier[DESTROYED]) {
+    return;
+  }
+
+  Ember.destroy(modifier);
+
+  meta.setSourceDestroyed()
+  modifier[DESTROYED] = true;
+}

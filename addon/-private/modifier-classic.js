@@ -1,23 +1,21 @@
 import EmberObject from '@ember/object';
-import createManager from './create-manager';
-import  { deprecate } from '@ember/application/deprecations';
 import { setModifierManager } from '@ember/modifier';
+import Manager from './modifier-manager';
 
-const Modifier = EmberObject.extend({
-  element: null,
-  didInsertElement() {},
-  didRecieveArguments() {},
+const ClassBasedModifier = EmberObject.extend({
+  args: null,
+
+  init() {
+    this._super(...arguments);
+    this.element = null;
+  },
+
+  didReceiveArguments() {},
   didUpdateArguments() {},
-  willDestroyElement() {}
+  didInstall() {},
+  willRemove() {}
 });
 
-Modifier.reopenClass({
-  modifier(Klass) {
-    deprecate("Modifier.modifier is deprecated.  Export the class directly.  See https://github.com/sukima/ember-oo-modifiers/pull/8", false, { id: 'modifier-call', until: "1.0.0" });
-    return Klass;
-  }
-});
+setModifierManager(() => Manager, ClassBasedModifier);
 
-setModifierManager(createManager, Modifier);
-
-export default Modifier;
+export default ClassBasedModifier;
