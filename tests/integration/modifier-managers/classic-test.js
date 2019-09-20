@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
+import { get } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import hbs from 'htmlbars-inline-precompile';
 import Modifier from 'ember-class-based-modifier/classic';
@@ -58,8 +59,8 @@ module('Integration | Modifier Manager | class-based modifier (classic class)', 
             this._super(...arguments);
 
             assert.step('constructor called');
-            assert.strictEqual(this.foo.isFooService, true, 'this.foo.isFooService');
-            assert.strictEqual(this.baz.isBarService, true, 'this.baz.isBarService');
+            assert.strictEqual(get(this, 'foo.isFooService'), true, 'this.foo.isFooService');
+            assert.strictEqual(get(this, 'baz.isBarService'), true, 'this.baz.isBarService');
           }
         })
       );
