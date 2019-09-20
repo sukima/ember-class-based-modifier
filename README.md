@@ -356,6 +356,80 @@ Whenever possible, it is recommended that you use the default "modern" API inste
 <dd>Called when the modifier itself is about to be destroyed; use for teardown code. Called after <code>willRemove</code>. The <code>element</code> is no longer available at this point (i.e. its value is <code>null</code> during teardown).</dd>
 </dl>
 
+### Lifecycle Summary
+
+<table>
+<thead><tr>
+  <th></th>
+  <th>Install</th>
+  <th>Update</th>
+  <th>Remove</th>
+  <th><code>this.element</code></th>
+  <th><code>this.args</code></th>
+</tr></thead>
+<tbody>
+  <tr>
+    <th><code>constructor()</code></th>
+    <td>(1)</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>after <code>super()</code></td>
+  </tr>
+
+  <tr>
+    <th><code>didUpdateArguments()</code></th>
+    <td>❌</td>
+    <td>(1)</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>✔️</td>
+  </tr>
+
+  <tr>
+    <th><code>didReceiveArguments()</code></th>
+    <td>(2)</td>
+    <td>(2)</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>✔️</td>
+  </tr>
+
+  <tr>
+    <th><code>didInstall()</code></th>
+    <td>(3)</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>✔️</td>
+  </tr>
+
+
+
+  <tr>
+    <th><code>willRemove()</code></th>
+    <td>❌</td>
+    <td>❌</td>
+    <td>(1)</td>
+    <td>✔️</td>
+    <td>✔️</td>
+  </tr>
+
+  <tr>
+    <th><code>willDestroy()</code></th>
+    <td>❌</td>
+    <td>❌</td>
+    <td>(2)</td>
+    <td>❌</td>
+    <td>✔️</td>
+  </tr>
+</tbody>
+</table>
+
+* (#) Indicates the order of invocation for the lifecycle event.
+* ❌  Indicates that the method is not invoked for a given lifecycle / property is not available.
+* ✔️  Indicates that the property is available during the invocation of the given method.
+
 ## API differences from [ember-oo-modifiers](https://github.com/sukima/ember-class-based-modifier/tree/maintenance/ember-oo-modifiers)
 
 * Renamed package to `ember-class-based-modifier`.
