@@ -351,7 +351,7 @@ But to avoid writing runtime checks, you can extend `Modifier` with your own arg
 import Modifier from 'ember-class-based-modifier';
 
 interface ScrollPositionModifierArgs {
-  positional: number[],
+  positional: [number],
   // this modifier doesn't accept named args, but this is included as an example:
   named: {
     delay: number
