@@ -46,14 +46,27 @@ export default class ScrollPositionModifier extends Modifier {
   get scrollPosition() {
     // get the first positional argument passed to the modifier
     //
-    // {{scoll-position @someNumber}}
+    // {{scoll-position @someNumber relative=@someBoolean}}
     //                  ~~~~~~~~~~~
     //
     return this.args.positional[0];
   }
 
+  get isRelative() {
+    // get the named argument "relative" passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                                       ~~~~~~~~~~~~
+    //
+    return this.args.named.relative
+  }
+
   didReceiveArguments() {
-    this.element.scrollTop = this.scrollPosition;
+    if(this.isRelative) {
+      this.element.scrollTop += this.scrollPosition;
+    } else {
+      this.element.scrollTop = this.scrollPosition;
+    }
   }
 }
 ```
@@ -66,7 +79,7 @@ Usage:
 <div
   class="scroll-container"
   style="width: 300px; heigh: 300px; overflow-y: scroll"
-  {{scroll-position this.scrollPosition}}
+  {{scroll-position this.scrollPosition relative=this.relative}}
 >
   {{yield this.scrollToTop}}
 </div>
@@ -81,8 +94,10 @@ import { action } from '@ember/object';
 
 export default class ScrollContainerComponent extends Component {
   @tracked scrollPosition = 0;
+  @tracked relative = false;
 
   @action scrollToTop() {
+    this.relative = false;
     this.scrollPosition = 0;
   }
 }
@@ -226,14 +241,27 @@ export default Modifier.extend({
   scrollPosition: computed('args.positional.[]', function() {
     // get the first positional argument passed to the modifier
     //
-    // {{scoll-position @someNumber}}
+    // {{scoll-position @someNumber relative=@someBoolean}}
     //                  ~~~~~~~~~~~
     //
     return this.args.positional[0];
   }),
 
+  isRelative: computed('args.named.relative', function() {
+    // get the named argument "relative" passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                                       ~~~~~~~~~~~~
+    //
+    return this.args.named.relative;
+  }),
+
   didReceiveArguments() {
-    this.element.scrollTop = this.get('scrollPosition');
+    if(this.get('isRelative')) {
+      this.element.scrollTop += this.get('scrollPosition');
+    } else {
+      this.element.scrollTop = this.get('scrollPosition');
+    }
   }
 });
 ```
@@ -352,9 +380,8 @@ import Modifier from 'ember-class-based-modifier';
 
 interface ScrollPositionModifierArgs {
   positional: [number],
-  // this modifier doesn't accept named args, but this is included as an example:
   named: {
-    delay: number
+    relative: boolean
   }
 }
 
@@ -362,14 +389,27 @@ export default class ScrollPositionModifier extends Modifier<ScrollPositionModif
   get scrollPosition(): number {
     // get the first positional argument passed to the modifier
     //
-    // {{scoll-position @someNumber}}
+    // {{scoll-position @someNumber relative=@someBoolean}}
     //                  ~~~~~~~~~~~
     //
     return this.args.positional[0];
   }
 
+  get isRelative(): boolean {
+    // get the named argument "relative" passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                                       ~~~~~~~~~~~~
+    //
+    return this.args.named.relative
+  }
+
   didReceiveArguments() {
-    this.element.scrollTop = this.scrollPosition;
+    if(this.isRelative) {
+      this.element.scrollTop += this.scrollPosition;
+    } else {
+      this.element.scrollTop = this.scrollPosition;
+    }
   }
 }
 ```
