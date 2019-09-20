@@ -331,6 +331,51 @@ export default Modifier.extend({
 
 Whenever possible, it is recommended that you use the default "modern" API instead of the classic API.
 
+## TypeScript
+
+Using the "modern" native class API, you can use `.ts` instead of `.js` and it'll just work, as long as you do runtime checks to narrow the types of your args when you access them. 
+
+```ts
+// app/modifiers/scroll-position.ts
+import Modifier from 'ember-class-based-modifier';
+
+export default class ScrollPositionModifier extends Modifier {
+  // ...
+}
+```
+
+But to avoid writing runtime checks, you can extend `Modifier` with your own args, similar to the way you would define your args for a Glimmer Component. 
+
+```ts
+// app/modifiers/scroll-position.ts
+import Modifier from 'ember-class-based-modifier';
+
+interface ScrollPositionModifierArgs {
+  positional: number[],
+  // this modifier doesn't accept named args, but this is included as an example:
+  named: {
+    delay: number
+  }
+}
+
+export default class ScrollPositionModifier extends Modifier<ScrollPositionModifierArgs> {
+  get scrollPosition(): number {
+    // get the first positional argument passed to the modifier
+    //
+    // {{scoll-position @someNumber}}
+    //                  ~~~~~~~~~~~
+    //
+    return this.args.positional[0];
+  }
+
+  didReceiveArguments() {
+    this.element.scrollTop = this.scrollPosition;
+  }
+}
+```
+
+See [this pull request comment](https://github.com/sukima/ember-class-based-modifier/pull/5#discussion_r326687943) for a full discussion about using TypeScript with your Modifiers. 
+
 ## API
 
 <dl>
