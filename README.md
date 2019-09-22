@@ -79,7 +79,7 @@ Usage:
 <div
   class="scroll-container"
   style="width: 300px; heigh: 300px; overflow-y: scroll"
-  {{scroll-position this.scrollPosition relative=this.relative}}
+  {{scroll-position this.scrollPosition relative=false}}
 >
   {{yield this.scrollToTop}}
 </div>
@@ -94,10 +94,8 @@ import { action } from '@ember/object';
 
 export default class ScrollContainerComponent extends Component {
   @tracked scrollPosition = 0;
-  @tracked relative = false;
 
   @action scrollToTop() {
-    this.relative = false;
     this.scrollPosition = 0;
   }
 }
