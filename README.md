@@ -46,14 +46,27 @@ export default class ScrollPositionModifier extends Modifier {
   get scrollPosition() {
     // get the first positional argument passed to the modifier
     //
-    // {{scoll-position @someNumber}}
+    // {{scoll-position @someNumber relative=@someBoolean}}
     //                  ~~~~~~~~~~~
     //
     return this.args.positional[0];
   }
 
+  get isRelative() {
+    // get the named argument "relative" passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                                       ~~~~~~~~~~~~
+    //
+    return this.args.named.relative
+  }
+
   didReceiveArguments() {
-    this.element.scrollTop = this.scrollPosition;
+    if(this.isRelative) {
+      this.element.scrollTop += this.scrollPosition;
+    } else {
+      this.element.scrollTop = this.scrollPosition;
+    }
   }
 }
 ```
@@ -66,7 +79,7 @@ Usage:
 <div
   class="scroll-container"
   style="width: 300px; heigh: 300px; overflow-y: scroll"
-  {{scroll-position this.scrollPosition}}
+  {{scroll-position this.scrollPosition relative=false}}
 >
   {{yield this.scrollToTop}}
 </div>
@@ -226,14 +239,27 @@ export default Modifier.extend({
   scrollPosition: computed('args.positional.[]', function() {
     // get the first positional argument passed to the modifier
     //
-    // {{scoll-position @someNumber}}
+    // {{scoll-position @someNumber relative=@someBoolean}}
     //                  ~~~~~~~~~~~
     //
     return this.args.positional[0];
   }),
 
+  isRelative: computed('args.named.relative', function() {
+    // get the named argument "relative" passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                                       ~~~~~~~~~~~~
+    //
+    return this.args.named.relative;
+  }),
+
   didReceiveArguments() {
-    this.element.scrollTop = this.get('scrollPosition');
+    if(this.isRelative) {
+      this.element.scrollTop += this.scrollPosition;
+    } else {
+      this.element.scrollTop = this.scrollPosition;
+    }
   }
 });
 ```
@@ -330,6 +356,63 @@ export default Modifier.extend({
 ```
 
 Whenever possible, it is recommended that you use the default "modern" API instead of the classic API.
+
+## TypeScript
+
+Using the "modern" native class API, you can use `.ts` instead of `.js` and it'll just work, as long as you do runtime checks to narrow the types of your args when you access them. 
+
+```ts
+// app/modifiers/scroll-position.ts
+import Modifier from 'ember-class-based-modifier';
+
+export default class ScrollPositionModifier extends Modifier {
+  // ...
+}
+```
+
+But to avoid writing runtime checks, you can extend `Modifier` with your own args, similar to the way you would define your args for a Glimmer Component. 
+
+```ts
+// app/modifiers/scroll-position.ts
+import Modifier from 'ember-class-based-modifier';
+
+interface ScrollPositionModifierArgs {
+  positional: [number],
+  named: {
+    relative: boolean
+  }
+}
+
+export default class ScrollPositionModifier extends Modifier<ScrollPositionModifierArgs> {
+  get scrollPosition(): number {
+    // get the first positional argument passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                  ~~~~~~~~~~~
+    //
+    return this.args.positional[0];
+  }
+
+  get isRelative(): boolean {
+    // get the named argument "relative" passed to the modifier
+    //
+    // {{scoll-position @someNumber relative=@someBoolean}}
+    //                                       ~~~~~~~~~~~~
+    //
+    return this.args.named.relative
+  }
+
+  didReceiveArguments() {
+    if(this.isRelative) {
+      this.element.scrollTop += this.scrollPosition;
+    } else {
+      this.element.scrollTop = this.scrollPosition;
+    }
+  }
+}
+```
+
+See [this pull request comment](https://github.com/sukima/ember-class-based-modifier/pull/5#discussion_r326687943) for a full discussion about using TypeScript with your Modifiers. 
 
 ## API
 
