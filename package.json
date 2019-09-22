@@ -1,6 +1,6 @@
 {
   "name": "ember-class-based-modifier",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "A class-based API for authoring element modifiers in Ember.",
   "keywords": [
     "ember-addon"
