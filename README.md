@@ -255,10 +255,10 @@ export default Modifier.extend({
   }),
 
   didReceiveArguments() {
-    if(this.get('isRelative')) {
-      this.element.scrollTop += this.get('scrollPosition');
+    if(this.isRelative) {
+      this.element.scrollTop += this.scrollPosition;
     } else {
-      this.element.scrollTop = this.get('scrollPosition');
+      this.element.scrollTop = this.scrollPosition;
     }
   }
 });
