@@ -12,10 +12,8 @@ Compatibility
 
 This is currently compatible with:
 
-* Ember.js v3.4 or above
+* Ember.js v2.18 or above
 * Ember CLI v2.13 or above
-
-(Support for v2.18 is blocked by: https://github.com/rwjblue/ember-modifier-manager-polyfill/pull/11)
 
 Installation
 ------------------------------------------------------------------------------

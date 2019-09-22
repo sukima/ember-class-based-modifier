@@ -267,11 +267,11 @@ function testHook({ name, insert, update, destroy, element, factory }) {
       ]);
     });
 
-    test('has access to positional arguments', async function(assert) {
+    test('has access to named arguments', async function(assert) {
       let expected;
 
       this.hook(instance => {
-        assert.deepEqual(instance.args.named, expected, 'this.args.named');
+        assert.deepEqual({ ...instance.args.named }, expected, 'this.args.named');
       });
 
       assert.step('no-op render');
