@@ -3,6 +3,10 @@ ember-class-based-modifier
 
 [![Build Status](https://travis-ci.org/sukima/ember-class-based-modifier.svg?branch=master)](https://travis-ci.org/sukima/ember-class-based-modifier)
 
+> **:warning: :point_right: This addon has been deprecated in favor of the official [`ember-modifier` addon](https://github.com/ember-modifier/ember-modifier). See the [upgrade guide](https://github.com/ember-modifier/ember-modifier#api-differences).**
+
+---
+
 > This is the next iteration of [ember-oo-modifiers](https://github.com/sukima/ember-class-based-modifier/tree/maintenance/ember-oo-modifiers) with some breaking changes to the API. If you are looking for the previous documentation, select the version you are using in the tags dropdown at the top of the page. For a list of API differences, see [here](#api-differences-from-ember-oo-modifiers)
 
 This addon provides a class-based API for authoring [element modifiers](https://blog.emberjs.com/2019/03/06/coming-soon-in-ember-octane-part-4.html) in Ember, similar to the [class-based helper](https://octane-guides-preview.emberjs.com/release/templates/writing-helpers/#toc_class-based-helpers) API.
